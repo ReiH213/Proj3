@@ -9,8 +9,8 @@ export class createAccountDto{
 }
 
 export class updateAccountDto{
-    id:string;
-    level?:number;
-    progress?:number;
-    xp_points?:number;
+    @IsNotEmpty()
+    progress:number;
+    @IsNotEmpty()
+    xp_points:number;
 }

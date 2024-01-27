@@ -20,18 +20,26 @@ let AccountService = class AccountService {
         const account = await account_entity_1.Account.findOneOrFail({ where: { id } });
         return account;
     }
-    async update(id, updateAccountDto) {
+    async update(id, reqBody) {
         const account = await account_entity_1.Account.findOne({ where: { id } });
-        if (updateAccountDto.level) {
-            account.level = updateAccountDto.level;
+        if (reqBody.progress) {
+            account.progress = reqBody.progress;
         }
-        if (updateAccountDto.progress) {
-            account.progress = updateAccountDto.progress;
-        }
-        if (updateAccountDto.xp_points) {
-            account.xp_points = updateAccountDto.xp_points;
+        if (reqBody.xp_points) {
+            account.xp_points = account.xp_points + reqBody.xp_points;
+            account.level = this.calculateLevel(account.xp_points);
         }
         return await account.save();
+    }
+    calculateLevel(xp_points) {
+        let level = 1;
+        let requiredXP = 1000;
+        while (xp_points >= requiredXP) {
+            xp_points -= requiredXP;
+            level++;
+            requiredXP *= 1.10;
+        }
+        return level;
     }
 };
 exports.AccountService = AccountService;

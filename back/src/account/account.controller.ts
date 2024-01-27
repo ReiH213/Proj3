@@ -22,7 +22,8 @@ export class AccountController{
     }
 
     @Put(':id')
-    update(@Param('id') id: string, @Body() updateAccountDto: updateAccountDto) {
-    return this.accountService.update(id, updateAccountDto);
+    @UseGuards(JwtAuthGuard)
+    update(@Param('id') id: string, @Body() reqBody: updateAccountDto) {
+    return this.accountService.update(id, reqBody);
   }
 }

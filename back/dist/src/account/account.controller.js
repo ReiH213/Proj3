@@ -28,8 +28,8 @@ let AccountController = class AccountController {
     async getAccount(id) {
         return await this.accountService.getAccountById(id);
     }
-    update(id, updateAccountDto) {
-        return this.accountService.update(id, updateAccountDto);
+    update(id, reqBody) {
+        return this.accountService.update(id, reqBody);
     }
 };
 exports.AccountController = AccountController;
@@ -51,6 +51,7 @@ __decorate([
 ], AccountController.prototype, "getAccount", null);
 __decorate([
     (0, common_1.Put)(':id'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

@@ -6,5 +6,5 @@ export declare class AccountController {
     constructor(accountService: AccountService);
     createAccount(reqBody: createAccountDto): Promise<Account>;
     getAccount(id: string): Promise<Account>;
-    update(id: string, updateAccountDto: updateAccountDto): Promise<Account>;
+    update(id: string, reqBody: updateAccountDto): Promise<Account>;
 }

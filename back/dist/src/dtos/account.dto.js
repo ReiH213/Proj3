@@ -25,4 +25,12 @@ __decorate([
 class updateAccountDto {
 }
 exports.updateAccountDto = updateAccountDto;
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], updateAccountDto.prototype, "progress", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], updateAccountDto.prototype, "xp_points", void 0);
 //# sourceMappingURL=account.dto.js.map

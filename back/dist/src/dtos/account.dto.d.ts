@@ -3,8 +3,6 @@ export declare class createAccountDto {
     character: string;
 }
 export declare class updateAccountDto {
-    id: string;
-    level?: number;
-    progress?: number;
-    xp_points?: number;
+    progress: number;
+    xp_points: number;
 }
